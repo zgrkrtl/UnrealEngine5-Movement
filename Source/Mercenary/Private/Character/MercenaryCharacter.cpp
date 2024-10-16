@@ -8,6 +8,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "UI/MercenaryHUD.h"
 #include "AbilitySystem/MercenaryASC.h"
+#include "Actor/Gun.h"
 
 // Sets default values
 AMercenaryCharacter::AMercenaryCharacter()
@@ -18,10 +19,23 @@ AMercenaryCharacter::AMercenaryCharacter()
 	Weapon->SetupAttachment(GetMesh(), FName("WeaponHandSocket"));
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-	Speed = 600.f;       
-	CrouchSpeed = 300.f; 
+	Speed = 300.f;       
+	NormalSpeed = 300.f;
+	RunSpeed = 600.f;
+}
+
+void AMercenaryCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	GetCharacterMovement()->MaxWalkSpeed = Speed;
+	Gun = GetWorld()->SpawnActor<AGun>(GunClass);
+	GetMesh()->HideBoneByName(TEXT("weapon_r"), EPhysBodyOp::PBO_None);
+	Gun->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("WeaponSocket"));
+	Gun->SetOwner(this);
 
 }
+
+
 
 void AMercenaryCharacter::PossessedBy(AController* NewController)
 {
@@ -63,14 +77,6 @@ void AMercenaryCharacter::InitAbilityActorInfo()
 
 		}
 	}
-}
-
-void AMercenaryCharacter::BeginPlay()
-{
-	Super::BeginPlay();
-
-	GetCharacterMovement()->MaxWalkSpeed = Speed;
-
 }
 
 

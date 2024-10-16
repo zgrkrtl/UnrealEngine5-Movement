@@ -9,6 +9,7 @@
 
 class UAbilitySystemComponent;
 class UAttributeSet;
+class AGun;
 
 UCLASS()
 class MERCENARY_API AMercenaryCharacter : public ACharacter, public IAbilitySystemInterface
@@ -29,7 +30,6 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
-
 	
 public:
 	virtual void PossessedBy(AController* NewController) override;
@@ -41,7 +41,16 @@ public:
 	float Speed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
-	float CrouchSpeed;
+	float RunSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
+	float NormalSpeed;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AGun> GunClass;
+
+	UPROPERTY()
+	AGun* Gun;
 
 	void SetSpeed(float InSpeed);
 private:
