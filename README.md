@@ -5,8 +5,8 @@
 ## Overview
 In this section, I will describe the movement mechanics I've implemented in [Mercenary]. The focus has been on creating a fluid and responsive 8-way locomotion system via animations from Mixamo.
 ## Takeaways
--I seperated Controls from Character class every input action defined in PlayerController class
--I used enhanced input system
+-I seperated Controls from Character class every input action defined in PlayerController class * \n
+-I used enhanced input system \n
 -I implemented simple GAS(GameplayAbilitySystem) Collectibles and FireArea
 -I simply implemented Model View Controller Architecture(MVC) for user interface - Just Progress bar for now
 -This work focused on movement and how can it be better with limited assets consisted.
