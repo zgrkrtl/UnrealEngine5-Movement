@@ -1,6 +1,6 @@
 # Unreal Engine 5 Movement
 
-# Movement Mechanics in
+# Movement Mechanics in Mercenary
 
 ## Overview
 In this section, I will describe the movement mechanics I've implemented in [Mercenary]. The focus has been on creating a fluid and responsive 8-way locomotion system via animations from Mixamo.
